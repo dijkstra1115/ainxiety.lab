@@ -75,6 +75,9 @@
 
 ## 📱 Threads 貼文草稿
 
+> 配圖：主文附 `reports/assets/2026-08-01/radar.png`（六工具排行卡）；
+> 成長王 buzz 可隔日用 `spotlight-buzz.png` 單獨加熱一篇。
+
 這週 GitHub 上竄最快的 6 個工具，第 3 個直接幫你省訂閱費 👇
 
 🥇 block/buzz：Block 開源的「人+AI 共用工作間」，agent 是正式隊友不是 bot。單週 +1 萬星，免費自架

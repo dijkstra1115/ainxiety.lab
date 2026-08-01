@@ -27,6 +27,28 @@ AI 自媒體內容工廠——用 Claude Skills + Routines 自動蒐集、分析
 3. **去重**：`reports/seen.json` 記錄介紹過的工具與評過的事件，定期執行不重複
 4. **誠實**：實測才寫實測、查不到就寫查不到、敢寫負評
 
+## 配圖產線（零成本，不需繪圖 API）
+
+每條內容線的草稿都會自動配一張 **1080×1350 品牌卡片**（Threads 動態最大版面），
+由 `tools/make_card.py` 用 HTML 模板 + 無頭 Chromium 截圖產生：
+
+| 卡片 | 用途 | 對應 skill |
+|---|---|---|
+| `radar` | 竄升工具排行清單 | github-trending |
+| `spotlight` | 單一工具 + 巨大成長數字 | github-trending（成長王） |
+| `quote` | 短評金句卡 | ai-news |
+| `verdict` | 👍👎💰 實測結論 + 結論章 | tool-deep-dive |
+| `digest` | 週回顧 3 條 + 下週預告 | weekly-digest |
+
+一次性安裝（產圖相依）：
+
+```bash
+pip install pillow                        # 裁切到精確尺寸
+npm install @fontsource/noto-sans-tc      # 中文字型（可選，無則退回系統字型）
+```
+
+設計採用經驗證的深色面板色票（對比全部通過 3:1），成品存 `reports/assets/{日期}/`。
+
 ## 快速開始
 
 對 Claude 說：

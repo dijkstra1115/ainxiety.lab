@@ -42,6 +42,17 @@ description: 彙整本週所有產出（工具雷達、AI 短評、實測報告�
 - 若 metrics 分析有結論，寫明下週的調整（例：「清單式回覆率低於短評 3 倍，
   下週雷達改試短評式開頭」）
 
+## 第 4.5 步：產出配圖
+
+digest 卡（3 條回顧 + 下週預告）→ `reports/assets/{YYYY-MM-DD}/digest.png`：
+
+```bash
+python3 tools/make_card.py --type digest \
+  --data payload.json --out reports/assets/{YYYY-MM-DD}/digest.png
+```
+
+items 每條控制在 30 字內、最多 3 條；teaser 放下週實測預告。產完用 Read 檢視確認再收尾。
+
 ## 第 5 步：收尾
 
 1. commit（`report: weekly digest YYYY-MM-DD`）並 push

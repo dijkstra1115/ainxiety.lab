@@ -55,6 +55,18 @@ python3 .claude/skills/ai-news/scripts/fetch_ai_news.py --out reports/news_raw.j
    - 回覆串放來源連結 + 次要動態
 3. **落選事件清單**：一句話記錄為何沒選（下次選題參考）
 
+## 第 4.5 步：產出配圖
+
+quote 卡（主題事件的 hook 金句）→ `reports/assets/{YYYY-MM-DD}/quote-ainews.png`：
+
+```bash
+python3 tools/make_card.py --type quote \
+  --json '{"date":"{YYYY-MM-DD}","label":"今日 AI 短評","quote":"...","context":"..."}' \
+  --out reports/assets/{YYYY-MM-DD}/quote-ainews.png
+```
+
+quote 控制在 45 字內（超過會擠版），context 是一句事實背景。產完用 Read 檢視確認再收尾。
+
 ## 第 5 步：收尾
 
 1. `reports/seen.json` 加入本次評論的主題（key 用 `news:{slug}`，格式與 repo 條目一致）

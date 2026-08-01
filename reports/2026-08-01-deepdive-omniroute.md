@@ -52,6 +52,8 @@ curl -X POST .../v1/chat/completions -d '{"model":"auto", ...}'
 
 ## 📱 Threads 貼文草稿
 
+> 配圖：主文附 `reports/assets/2026-08-01/verdict-omniroute.png`（實測結論卡）。
+
 我把最近爆紅的 OmniRoute（號稱免費聚合 290+ 家 AI 模型）真的裝起來測了，講三個真心話 👇
 
 👍 零設定是真的：npm 裝完直接跑，11 家免費供應商預接好，一個帳號都不用註冊

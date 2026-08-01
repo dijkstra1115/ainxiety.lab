@@ -49,6 +49,18 @@ description: 從近期介紹過的潛力工具（reports/seen.json）挑一個�
    主文無連結；回覆串放安裝指令 + repo 連結
 3. 測試產生的暫存目錄清乾淨，不要 commit 進 repo
 
+## 第 4.5 步：產出配圖
+
+verdict 卡（👍👎💰 三行 + 結論章）→ `reports/assets/{YYYY-MM-DD}/verdict-{repo短名}.png`：
+
+```bash
+python3 tools/make_card.py --type verdict \
+  --data payload.json --out reports/assets/{YYYY-MM-DD}/verdict-{repo短名}.png
+```
+
+payload 的 points 每行控制在 30 字內；verdict_kind 依結論選 good（值得裝）/
+warn（先觀望）/ bad（不推薦）。產完用 Read 檢視確認再收尾。
+
 ## 第 5 步：收尾
 
 1. `reports/seen.json` 加入 `deepdive:owner/repo` 條目

@@ -86,6 +86,20 @@ python3 .claude/skills/github-trending/scripts/fetch_trending.py \
 - Threads 單則上限 500 字元，若超過就拆成主文 + 回覆串（在草稿中用 `---（回覆串 2）---` 分隔）
 - 結尾附 2–3 個 hashtag（如 #GitHub #開源 #開發者工具）
 
+## 第 4.5 步：產出配圖
+
+用卡片產生器做 Threads 配圖（1080×1350 PNG，設定與相依見 `tools/make_card.py` 開頭註解）：
+
+1. **radar 卡**（必做）：本期精選清單 → `reports/assets/{YYYY-MM-DD}/radar.png`
+   ```bash
+   python3 tools/make_card.py --type radar --data payload.json \
+     --out reports/assets/{YYYY-MM-DD}/radar.png
+   ```
+   payload 的 `items[].delta` 用最有力的成長數字（如 `+10,558 ⭐ 週`），`desc` 控制在 20 字內避免截斷
+2. **spotlight 卡**（選做）：本期成長王單獨一張，適合當第二張圖或隔日加熱貼文
+3. 產完務必用 Read 檢視 PNG 確認無跑版、無截字，再寫進報告
+4. 在報告的 Threads 草稿區塊註明每則貼文搭配哪張圖
+
 ## 第 5 步：更新狀態並提交
 
 1. 更新 `reports/seen.json`：對每個本期介紹的 repo 記錄 `{"full_name": {"featured_on": "YYYY-MM-DD", "stars_at_feature": N}}`，保留歷史紀錄
