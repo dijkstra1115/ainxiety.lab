@@ -1,68 +1,60 @@
 # ainxiety.lab
 
-自動化工具實驗室。目前包含：
+AI 自媒體內容工廠——用 Claude Skills + Routines 自動蒐集、分析、產出繁中 AI/開發者內容，
+餵養 Threads 帳號。全 pipeline 只用免費資源，發布前保留人工把關。
 
-## 🔭 github-trending Skill
+📖 發展藍圖：[docs/ROADMAP.md](docs/ROADMAP.md)
+📖 經營策略與寫作規則：[docs/content-strategy.md](docs/content-strategy.md)
+📖 貼文模板庫：[templates/threads-templates.md](templates/threads-templates.md)
 
-自動蒐集 GitHub 上星星數成長最快、最有爆火潛力的 repo，分析每個工具的：
+## 內容 Skill 矩陣
 
-- **用途**：它解決什麼問題
-- **使用方式**：具體安裝與最小上手指令
-- **費用**：完全免費 ✅ / 需要第三方 API key 🔑 / open-core 有付費版 💰
+| Skill | 內容線 | 建議排程 | 產出 |
+|---|---|---|---|
+| [`github-trending`](.claude/skills/github-trending/SKILL.md) | 🔭 竄升工具雷達 | 每週一 | 5–8 個潛力 repo 分析 + Threads 清單文 |
+| [`ai-news`](.claude/skills/ai-news/SKILL.md) | 📰 今日 AI 短評 | 每週二、四 | 一主二副事件 + 有立場的短評文 |
+| [`tool-deep-dive`](.claude/skills/tool-deep-dive/SKILL.md) | 🔧 實測報告 | 每週三 | 沙盒真裝真跑的實測筆記 + 實測文 |
+| [`weekly-digest`](.claude/skills/weekly-digest/SKILL.md) | 📅 週報＋下週計畫 | 每週日 | 回顧文 + 內部選題計畫與成效分析 |
 
-並產出繁體中文報告 + 可直接發布的 **Threads 貼文草稿**，存到 `reports/` 目錄。
+每個 skill 的產出都包含**可直接複製發布的 Threads 草稿**（含分串、連結放回覆串、
+結尾提問——規則見經營策略文件）。
 
-### 資料來源（全部免費，不需付費服務）
+## 共同設計原則
 
-| 來源 | 提供什麼 | 需要 API key？ |
-|---|---|---|
-| GitHub Trending 頁面（日榜/週榜） | 今日/本週新增星星數 | 不需要 |
-| GitHub Search API | 近 30 天新建但已高星的「新秀」repo，計算每日星星成長速度 | 不需要（有 `GITHUB_TOKEN` 時自動使用，限流較寬） |
-| WebFetch 備援 | 上述來源在受限網路環境失敗時的替代路徑 | 不需要 |
+1. **免費**：GitHub Trending/Search API、HN Algolia、HF papers 全部免費、不需 API key
+   （有 `GITHUB_TOKEN` 時自動使用以放寬限流，也免費）
+2. **三層降級**：腳本直連 → WebFetch → WebSearch，任何網路環境都能跑完
+3. **去重**：`reports/seen.json` 記錄介紹過的工具與評過的事件，定期執行不重複
+4. **誠實**：實測才寫實測、查不到就寫查不到、敢寫負評
 
-### 怎麼觸發
+## 快速開始
 
-在 Claude Code / Claude 對話中說：
-
-```
-/github-trending
-```
-
-或自然語言：「幫我找這週 GitHub 上爆紅的 repo」。
-
-### 搭配 Routines 定期執行
-
-在 Claude 建立 Routine，排程（例如每週一早上）執行 prompt：
+對 Claude 說：
 
 ```
-執行 github-trending skill，蒐集本週 GitHub 潛力 repo，
-產出報告與 Threads 草稿，commit 並 push。
+/github-trending          # 或「幫我找這週爆紅的 repo」
+/ai-news                  # 或「今天 AI 圈發生什麼」
+/tool-deep-dive           # 或「實測 owner/repo」
+/weekly-digest            # 或「本週回顧」
 ```
 
-每次執行會：
+### Routines 排程（建議起手式：每週 3 則）
 
-1. 抓取三個來源的候選 repo
-2. 比對 `reports/seen.json`，跳過 14 天內已介紹過的（不會重複發文）
-3. 挑 5～8 個最有潛力的深入分析
-4. 產出 `reports/YYYY-MM-DD-github-trending.md`（含 Threads 草稿）
-5. commit + push，並在回覆中直接貼出草稿全文
+| Routine prompt | Cron（台北時間） |
+|---|---|
+| 執行 github-trending skill，產出報告與草稿，commit 並 push | 週一 09:00 |
+| 執行 tool-deep-dive skill，實測本週雷達最值得測的工具 | 週三 09:00 |
+| 執行 weekly-digest skill，回顧本週並規劃下週 | 週日 20:00 |
 
-### 手動跑抓取腳本（可選）
+穩定後加入週二、四的 `ai-news` 升到每週 5 則。
 
-```bash
-python3 .claude/skills/github-trending/scripts/fetch_trending.py --help
-python3 .claude/skills/github-trending/scripts/fetch_trending.py --lang python --readme-top 5
-```
-
-只用 Python 標準函式庫，無任何第三方相依。
-
-### 目錄結構
+## 目錄結構
 
 ```
-.claude/skills/github-trending/
-├── SKILL.md                  # Skill 指令（Claude 讀這個）
-└── scripts/fetch_trending.py # 抓取腳本（stdlib only）
-reports/
-├── YYYY-MM-DD-github-trending.md  # 每期報告
-└── seen.json                      # 已介紹過的 repo（避免重複）
+.claude/skills/           # 四個內容 skill（各含 SKILL.md，部分含抓取腳本）
+docs/                     # ROADMAP、經營策略
+templates/                # Threads 貼文模板與 hook 句庫
+reports/                  # 每期報告（含 Threads 草稿）
+├── seen.json             # 去重紀錄
+└── metrics.json          # 貼文成效（Phase 2 啟用）
 ```
