@@ -123,10 +123,12 @@ def tpl_radar(d):
                         overflow:hidden;text-overflow:ellipsis">{esc(it.get('desc'))}</div>
           </div>
         </div>"""
+    label = d.get("label") or "GITHUB 潛力雷達"
+    title = d.get("title") or f"本週竄升最快的 {len(d.get('items', [])[:6])} 個工具"
     return f"""{HEADER.format(date=esc(d.get('date')))}
-      <div class="label">GITHUB 潛力雷達</div>
+      <div class="label">{esc(label)}</div>
       <div style="font-size:29px;font-weight:900;line-height:1.25;margin-bottom:10px">
-        本週竄升最快的 {len(d.get('items', [])[:6])} 個工具</div>
+        {esc(title)}</div>
       <div>{rows}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:10px">完整分析與連結請看留言 👇</div>
       {FOOTER.format(handle=esc(d.get('handle') or ''))}"""

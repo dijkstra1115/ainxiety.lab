@@ -6,5 +6,12 @@
   "usekaneo/kaneo": {"featured_on": "2026-08-01", "stars_at_feature": 5579},
   "virgiliojr94/book-to-skill": {"featured_on": "2026-08-01", "stars_at_feature": 14744},
   "news:openai-models-hacked-huggingface": {"featured_on": "2026-08-01"},
-  "deepdive:diegosouzapw/OmniRoute": {"featured_on": "2026-08-01"}
+  "deepdive:diegosouzapw/OmniRoute": {"featured_on": "2026-08-01"},
+  "twentyhq/twenty": {"featured_on": "2026-08-02", "stars_at_feature": 54100},
+  "calcom/cal.com": {"featured_on": "2026-08-02", "stars_at_feature": 47200},
+  "TryGhost/Ghost": {"featured_on": "2026-08-02", "stars_at_feature": 54600},
+  "halo-dev/halo": {"featured_on": "2026-08-02", "stars_at_feature": 39500},
+  "frappe/erpnext": {"featured_on": "2026-08-02", "stars_at_feature": 37500},
+  "nocobase/nocobase": {"featured_on": "2026-08-02", "stars_at_feature": 23500},
+  "deepdive:browser-use/video-use": {"featured_on": "2026-08-02"}
 }
