@@ -183,11 +183,11 @@ def tpl_quote(d):
       <div class="label">{esc(d.get('label') or '今日 AI 短評')}</div>
       <div style="flex:1;display:flex;align-items:center;justify-content:center">
         <div style="position:relative;display:inline-block;padding:30px 34px;max-width:440px">
-          <div style="position:absolute;top:-18px;left:-38px;font-size:64px;font-weight:900;
+          <div style="position:absolute;top:-18px;left:-66px;font-size:64px;font-weight:900;
                       color:var(--accent);line-height:1">「</div>
           <div style="font-size:27px;font-weight:900;line-height:1.6;white-space:pre-line;
                       text-wrap:balance">{esc(d.get('quote'))}</div>
-          <div style="position:absolute;bottom:-18px;right:-38px;font-size:64px;font-weight:900;
+          <div style="position:absolute;bottom:-18px;right:-66px;font-size:64px;font-weight:900;
                       color:var(--accent);line-height:1">」</div>
         </div>
       </div>
