@@ -13,6 +13,13 @@
   ✅ 已驗證走 Instagram 官方 API（README 明言不爬蟲、不要密碼）——可安心介紹。
   自架需求：Docker（Postgres + Redis）+ 自備免費 Meta 開發者 App 憑證 + Resend 帳號。
   MIT。星數不高但題材極符合定位，適合「小而美挖掘」角度。
+  ⚠️ 測試邊界：沙盒可測到「安裝→啟動→OAuth 牆」為止；連真實 IG 與觸發回覆
+  需帳號主用自己的 Meta App 接力完成（接力流程順便演練 Phase 3 的 Meta 審核）。
+
+## 企業數位轉型線（服務射程內，待挖）
+
+- 待第一輪定向蒐集：`topic:crm`、`topic:cms`、`topic:low-code`、`topic:booking`、
+  `line bot stars:>200`——優先挑「介紹文能自然接實戰案例」的工具
 
 ## 上期雷達待實測
 
