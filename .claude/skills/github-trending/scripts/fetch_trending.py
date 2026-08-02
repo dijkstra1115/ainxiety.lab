@@ -121,9 +121,9 @@ def fetch_trending_page(since="daily", language=""):
 # Source 2: Search API — young repos with lots of stars (high velocity)
 # ---------------------------------------------------------------------------
 
-def fetch_rising_newcomers(days=30, min_stars=200, per_page=25):
+def fetch_rising_newcomers(days=30, min_stars=200, per_page=25, query=""):
     created_after = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
-    q = f"created:>{created_after} stars:>{min_stars}"
+    q = query or f"created:>{created_after} stars:>{min_stars}"
     data = api_get(
         "/search/repositories?"
         + urllib.parse.urlencode({"q": q, "sort": "stars", "order": "desc", "per_page": per_page})
@@ -172,6 +172,9 @@ def main():
     ap.add_argument("--min-stars", type=int, default=200, help="newcomer min stars")
     ap.add_argument("--readme-top", type=int, default=0,
                     help="fetch README excerpts for top N repos across all sources")
+    ap.add_argument("--query", default="",
+                    help="override the newcomer search query entirely, e.g. "
+                         "'created:>2026-05-01 stars:>300 topic:self-hosted'")
     ap.add_argument("--out", default="", help="write JSON to this file instead of stdout")
     args = ap.parse_args()
 
@@ -187,7 +190,8 @@ def main():
     for key, fn in [
         ("trending_daily", lambda: fetch_trending_page("daily", args.lang)),
         ("trending_weekly", lambda: fetch_trending_page("weekly", args.lang)),
-        ("rising_newcomers", lambda: fetch_rising_newcomers(args.days, args.min_stars)),
+        ("rising_newcomers", lambda: fetch_rising_newcomers(args.days, args.min_stars,
+                                                            query=args.query)),
     ]:
         try:
             result[key] = fn()

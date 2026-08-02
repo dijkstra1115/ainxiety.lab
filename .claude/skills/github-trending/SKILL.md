@@ -29,10 +29,17 @@ python3 .claude/skills/github-trending/scripts/fetch_trending.py \
 
 1. 讀取 `reports/seen.json`（不存在就當空的）。**14 天內已介紹過的 repo 直接跳過**，除非它有重大新動態（例如星星數翻倍、發布 1.0）。
 2. 從所有來源合併去重後，挑出 **5～8 個**最值得介紹的。挑選標準（重要性排序）：
+   - **SaaS 平替**：能取代付費訂閱服務的自架/免費工具（例：openreply 取代 ManyChat、
+     kaneo 取代 Jira）。這是帳號核心定位，同分時永遠優先；介紹時必附「取代誰、省多少/月」
    - **成長速度**：daily 新增星數高、或 `stars_per_day` 高的年輕 repo，優先於總星數高的老牌專案
-   - **對一般開發者/創作者實用**：讀者看完能直接上手用的工具 > 純研究性質的論文程式碼
+   - **對創作者/小商家/開發者實用**：讀者看完能直接上手用的工具 > 純研究性質的論文程式碼。
+     不限 AI 主題——剪片、社群經營、排程、電商工具都在範圍內
    - **故事性**：新概念、解決普遍痛點、大廠開源、獨立開發者爆紅——這些在 Threads 上有話題性
    - **排除**：awesome-list 清單類、純教學課程類（如 xxx-for-beginners）除非成長異常驚人；已經人盡皆知的巨型專案（如 100k+ 星的老專案只是日常波動）
+3. 為了不漏掉 SaaS 平替類（它們常不在 trending 榜上），額外跑一輪定向蒐集：
+   - 腳本：`--query "created:>{90天前} stars:>300 topic:self-hosted"` 與
+     `--query "open source alternative created:>{90天前} stars:>200"`
+   - 或 WebFetch 對應的 GitHub 搜尋頁；也可 WebSearch「open source alternative to {熱門 SaaS}」
 
 ## 第 3 步：逐一深入分析
 

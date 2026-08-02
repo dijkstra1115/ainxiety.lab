@@ -97,7 +97,7 @@ body {
 
 HEADER = """<div class="hdr"><div class="brand">ainxiety<span class="dot">.</span>lab</div>
 <div class="date">{date}</div></div>"""
-FOOTER = """<div class="ftr"><span>AI 工具偵察兵・親測不吹捧</span><span>{handle}</span></div>"""
+FOOTER = """<div class="ftr"><span>幫你戒訂閱費的工具偵察兵・親測不吹捧</span><span>{handle}</span></div>"""
 
 
 def esc(s):

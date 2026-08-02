@@ -1,7 +1,8 @@
 # ainxiety.lab
 
-AI 自媒體內容工廠——用 Claude Skills + Routines 自動蒐集、分析、產出繁中 AI/開發者內容，
-餵養 Threads 帳號。全 pipeline 只用免費資源，發布前保留人工把關。
+自媒體內容工廠——用 Claude Skills + Routines 自動蒐集、分析、產出繁中工具類內容
+（定位：**幫你戒掉訂閱費的工具偵察兵**——挖掘能取代付費 SaaS 的免費/開源工具，
+親測後告訴你值不值得換），餵養 Threads 帳號。全 pipeline 只用免費資源，發布前保留人工把關。
 
 📖 發展藍圖：[docs/ROADMAP.md](docs/ROADMAP.md)
 📖 經營策略與寫作規則：[docs/content-strategy.md](docs/content-strategy.md)

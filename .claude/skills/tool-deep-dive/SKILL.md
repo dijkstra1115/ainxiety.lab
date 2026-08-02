@@ -11,7 +11,8 @@ description: 從近期介紹過的潛力工具（reports/seen.json）挑一個�
 ## 第 1 步：選目標
 
 - 使用者指定了 repo → 直接用
-- 沒指定 → 讀 `reports/seen.json` 與最近兩期 `reports/*-github-trending.md`，挑選標準：
+- 沒指定 → 先看 `reports/watchlist.md`（實測候選清單，SaaS 平替線優先），
+  再看 `reports/seen.json` 與最近兩期 `reports/*-github-trending.md`，挑選標準：
   1. **可在無 GUI 的 Linux 沙盒裡實測**（CLI 工具、library、Docker 服務優先；
      桌面 App / 手機 App 不行——只能做「安裝流程 + 文件深讀」的降級版並明說）
   2. 讀者上手門檻低（pip/npm/docker 一行裝）
@@ -37,6 +38,10 @@ description: 從近期介紹過的潛力工具（reports/seen.json）挑一個�
 - 👍 兩個真的好的點（具體到功能，不是「很好用」）
 - 👎 至少一個雷或限制（沒有雷 = 沒測夠；再挖）
 - 💰 費用真相：免費額度撐得起什麼強度的使用？什麼情況下會開始花錢？
+- 💸 SaaS 平替帳（若適用）：它取代哪個付費服務、省多少/月，以及**真實成本**
+  （安裝時間 + 主機需求/VPS 月費），兩邊都寫才算誠實
+- ⚠️ 平台風險（若適用）：自動化 IG/FB/LINE 等第三方平台的工具，必查走官方 API
+  還是爬蟲仿真；非官方要標「有停權風險」
 - 🎯 一句話結論：「值得裝」「先觀望」「等 X 再說」＋適合誰/不適合誰
 
 ## 第 4 步：產出
