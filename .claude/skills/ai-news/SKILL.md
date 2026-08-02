@@ -65,7 +65,8 @@ python3 tools/make_card.py --type quote \
   --out reports/assets/{YYYY-MM-DD}/quote-ainews.png
 ```
 
-quote 控制在 45 字內（超過會擠版），context 是一句事實背景。產完用 Read 檢視確認再收尾。
+quote 控制在 45 字內（超過會擠版），並用 `\n` 在**語意邊界**手動斷行（自動斷行會切在
+詞中間）；context 是一句事實背景。產完用 Read 檢視確認再收尾。
 
 ## 第 5 步：收尾
 

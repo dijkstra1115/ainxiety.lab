@@ -18,6 +18,7 @@ Card types and their JSON payloads:
              "verdict":"值得裝","verdict_kind":"good"}   # good|warn|bad
   quote     {"date": "...", "label":"今日 AI 短評","quote":"...",
              "context":"一句背景說明"}
+            # quote 支援 \n 手動斷行——中文請在語意邊界自行斷行，版面最好看
   digest    {"date": "...", "title":"本週 AI 圈回顧","items":["...","...","..."],
              "teaser":"下週實測預告：X"}
 
@@ -176,14 +177,19 @@ def tpl_verdict(d):
 
 
 def tpl_quote(d):
+    # Oversized brackets pinned to the text block's own corners so the quote
+    # reads as enclosed — the wrapper shrinks to the text, brackets follow it.
     return f"""{HEADER.format(date=esc(d.get('date')))}
       <div class="label">{esc(d.get('label') or '今日 AI 短評')}</div>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
-        <div style="font-size:56px;font-weight:900;color:var(--accent);line-height:0.6">「</div>
-        <div style="font-size:27px;font-weight:900;line-height:1.55;margin:10px 4px">
-          {esc(d.get('quote'))}</div>
-        <div style="font-size:56px;font-weight:900;color:var(--accent);line-height:0.9;
-                    text-align:right">」</div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center">
+        <div style="position:relative;display:inline-block;padding:30px 34px;max-width:440px">
+          <div style="position:absolute;top:-14px;left:-10px;font-size:64px;font-weight:900;
+                      color:var(--accent);line-height:1">「</div>
+          <div style="font-size:27px;font-weight:900;line-height:1.6;white-space:pre-line;
+                      text-wrap:balance">{esc(d.get('quote'))}</div>
+          <div style="position:absolute;bottom:-14px;right:-10px;font-size:64px;font-weight:900;
+                      color:var(--accent);line-height:1">」</div>
+        </div>
       </div>
       <div style="font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:14px">
         {esc(d.get('context'))}</div>
