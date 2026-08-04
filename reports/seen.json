@@ -13,5 +13,11 @@
   "halo-dev/halo": {"featured_on": "2026-08-02", "stars_at_feature": 39500},
   "frappe/erpnext": {"featured_on": "2026-08-02", "stars_at_feature": 37500},
   "nocobase/nocobase": {"featured_on": "2026-08-02", "stars_at_feature": 23500},
-  "deepdive:browser-use/video-use": {"featured_on": "2026-08-02"}
+  "deepdive:browser-use/video-use": {"featured_on": "2026-08-02"},
+  "lyogavin/airllm": {"featured_on": "2026-08-04", "stars_at_feature": 27764},
+  "drumih/turbo-fieldfare": {"featured_on": "2026-08-04", "stars_at_feature": 4700},
+  "firecrawl/pdf-inspector": {"featured_on": "2026-08-04", "stars_at_feature": 9018},
+  "TencentCloud/TencentDB-Agent-Memory": {"featured_on": "2026-08-04", "stars_at_feature": 12572},
+  "openai/codex-security": {"featured_on": "2026-08-04", "stars_at_feature": 8500},
+  "oso95/scroll-world": {"featured_on": "2026-08-04", "stars_at_feature": 7300}
 }
