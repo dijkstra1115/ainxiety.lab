@@ -19,5 +19,12 @@
   "firecrawl/pdf-inspector": {"featured_on": "2026-08-04", "stars_at_feature": 9018},
   "TencentCloud/TencentDB-Agent-Memory": {"featured_on": "2026-08-04", "stars_at_feature": 12572},
   "openai/codex-security": {"featured_on": "2026-08-04", "stars_at_feature": 8500},
-  "oso95/scroll-world": {"featured_on": "2026-08-04", "stars_at_feature": 7300}
+  "oso95/scroll-world": {"featured_on": "2026-08-04", "stars_at_feature": 7300},
+  "CoreBunch/Instatic": {"featured_on": "2026-08-10", "stars_at_feature": 7800},
+  "coollabsio/shoutrrr": {"featured_on": "2026-08-10", "stars_at_feature": 282},
+  "trycompai/crm": {"featured_on": "2026-08-10", "stars_at_feature": 8100},
+  "firecrawl/anydoc": {"featured_on": "2026-08-10", "stars_at_feature": 13300},
+  "nyblnet/bento": {"featured_on": "2026-08-10", "stars_at_feature": 3900},
+  "pireel/pireel": {"featured_on": "2026-08-10", "stars_at_feature": 916},
+  "PrimeIntellect-ai/prime-agent": {"featured_on": "2026-08-10", "stars_at_feature": 12816}
 }
